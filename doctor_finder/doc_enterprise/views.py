@@ -2,8 +2,23 @@ from django.shortcuts import render
 from .models import doctor,patient
 
 # Create your views here.
-def first(request):
-    doctor_data = doctor.objects.create(first_name ='rajan',last_name = 'sharma',email='rajan@gmail.com')
-    all_data_doc = doctor.objects.all()
-    doctor.objects.get(id=1).delete()
-    return render(request,'doc_enterprise/index.html',{'all_data_doc':all_data_doc})
+def doctor_registration_page(request):
+    return render(request,"doc_enterprise/doctor-registration.html")
+
+def doctor_profile(request):
+    return render(request,"doc_enterprise/doctor-profile.html")
+
+
+def doctor_register(request):
+    first_name = request.POST['first_name']
+    last_name = request.POST['last_name']
+    mobile = request.POST['mobile']
+    profile_pic = request.FILES['profile_pic']
+
+    doctor_new = doctor.objects.create(first_name= first_name,last_name=last_name,mobile=mobile,profile_pic=profile_pic)
+    return render(request,"doc_enterprise/doctor-profile.html",{'doctor_data':doctor_new})
+
+
+    # d = doctor()
+    # d.first_name =  request.POST['first_name']
+    # d.save()
