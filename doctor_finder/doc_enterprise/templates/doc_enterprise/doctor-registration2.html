@@ -11,7 +11,7 @@
 <body>
     <form method='POST' action="{% url 'doctor-data' %}" enctype="multipart/form-data">
         {% csrf_token %}    
-        {{ form.as_p}}
+        {{ form.as_table}}
         <input type='submit' value='register'>
     </form>
     

@@ -1,7 +1,18 @@
-from django import forms
+from django.forms import ModelForm, Textarea
+from .models import *
 
-class DoctorRegister(forms.Form):
-    first_name = forms.CharField(max_length=100)
-    last_name = forms.CharField(max_length=100)
-    mobile = forms.IntegerField()
-    profile_pic = forms.FileField()
+class DoctorRegister(ModelForm):
+    class Meta:
+        model = patient
+        fields = '__all__'
+        labels = {
+            'first_name': 'First Name'
+        }
+        help_texts = {
+            'first_name': 'Some useful help text.'
+        }
+        error_messages = {
+            'first_name': {
+                'max_length': "This writer's name is too long."
+            },
+        }

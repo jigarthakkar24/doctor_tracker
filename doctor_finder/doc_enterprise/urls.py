@@ -22,7 +22,10 @@ urlpatterns = [
     path('doctor-registration/',views.doctor_register,name='doctor-register'),
     path('doctor-profile/',views.doctor_profile,name='doctor_profile'),
     path('doctor-register/',views.doctorFormRegister,name='doctor-form-register'),
-    path('doctor-register-data/',views.doctor_form_register,name='doctor-data')
+    path('doctor-register-data/',views.doctor_form_register,name='doctor-data'),
+    path('registration-form/',views.registration,name='registration'),
+    path('registration-form-2/',views.registrationDoctor,name='register-doctor-data'),
+    path('login/',views.login,name='login')
     
 
 ]
